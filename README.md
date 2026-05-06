@@ -64,10 +64,11 @@ I design and scale automation systems that give teams fast, trustworthy feedback
 
 ## Featured automation projects
 
-- [`qa-mobile-banking-framework`](https://github.com/eyupcanbilgin/qa-mobile-banking-framework) - Appium + Java framework for high-risk mobile scenarios
-- [`ui-api-regression-pipeline`](https://github.com/eyupcanbilgin/ui-api-regression-pipeline) - Playwright + RestAssured CI orchestration blueprint
-- [`contract-testing-lab`](https://github.com/eyupcanbilgin/contract-testing-lab) - consumer/provider contract quality gates
-- [`flaky-test-observatory`](https://github.com/eyupcanbilgin/flaky-test-observatory) - flaky test analytics and stabilization playbook
+These links point to **your public repositories** under [`eyupcanbilgin`](https://github.com/eyupcanbilgin) (not placeholders). The six boxes at the top of your GitHub profile are **Pinned repositories** — you change those on your profile with **Customize pins**.
+
+- [`playwright-quality-gates-lab`](https://github.com/eyupcanbilgin/playwright-quality-gates-lab) — Playwright + TypeScript QA lab (UI, API, a11y, performance smoke, CI gates)
+- [`qa-event-performance-lab`](https://github.com/eyupcanbilgin/qa-event-performance-lab) — REST, Redis, RabbitMQ, Kafka/Redpanda, k6 / JMeter / Locust
+- [`ai-quality-evaluation-lab`](https://github.com/eyupcanbilgin/ai-quality-evaluation-lab) — AI quality evaluation, regression datasets, groundedness / hallucination checks, CI thresholds
 
 ## Live engineering metrics
 
