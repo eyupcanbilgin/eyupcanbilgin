@@ -1,0 +1,116 @@
+name: Metrics
+
+on:
+  schedule:
+    # 06:00 Europe/Istanbul (UTC+3)
+    - cron: "0 3 * * *"
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+      - master
+
+permissions:
+  contents: write
+
+concurrency:
+  group: metrics-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  github-metrics:
+    runs-on: ubuntu-latest
+    env:
+      TZ: Europe/Istanbul
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Generate profile metrics
+        uses: lowlighter/metrics@latest
+        with:
+          filename: metrics.profile.svg
+          token: ${{ secrets.METRICS_TOKEN }}
+          user: eyupcanbilgin
+          template: classic
+          base: header, activity, community, repositories, metadata
+          config_timezone: Europe/Istanbul
+          config_display: columns
+          plugin_isocalendar: yes
+          plugin_languages: yes
+          # Stabilite için: activity/habits ayrı SVG'de; profil overview'dan kaldırıldı
+          plugin_habits: no
+          plugin_activity: no
+          committer_branch: ${{ github.event.repository.default_branch }}
+          committer_message: "chore(metrics): update metrics.profile.svg"
+          output_action: commit
+          output_condition: always
+
+      - name: Generate language metrics
+        uses: lowlighter/metrics@latest
+        with:
+          filename: metrics.languages.svg
+          token: ${{ secrets.METRICS_TOKEN }}
+          user: eyupcanbilgin
+          base: ""
+          config_timezone: Europe/Istanbul
+          plugin_languages: yes
+          plugin_languages_limit: 8
+          plugin_languages_sections: most-used
+          plugin_languages_details: percentage
+          plugin_languages_indepth: yes
+          plugin_languages_analysis_timeout: 15
+          committer_branch: ${{ github.event.repository.default_branch }}
+          committer_message: "chore(metrics): update metrics.languages.svg"
+          output_action: commit
+          output_condition: always
+
+      - name: Generate calendar metrics
+        uses: lowlighter/metrics@latest
+        with:
+          filename: metrics.calendar.svg
+          token: ${{ secrets.METRICS_TOKEN }}
+          user: eyupcanbilgin
+          base: ""
+          config_timezone: Europe/Istanbul
+          plugin_isocalendar: yes
+          plugin_isocalendar_duration: full-year
+          committer_branch: ${{ github.event.repository.default_branch }}
+          committer_message: "chore(metrics): update metrics.calendar.svg"
+          output_action: commit
+          output_condition: always
+
+      - name: Generate activity metrics
+        uses: lowlighter/metrics@latest
+        with:
+          filename: metrics.activity.svg
+          token: ${{ secrets.METRICS_TOKEN }}
+          user: eyupcanbilgin
+          base: activity
+          config_timezone: Europe/Istanbul
+          # "Unexpected error" veren plugin'leri kapatıp sadece base activity kullan
+          plugin_activity: no
+          plugin_habits: no
+          committer_branch: ${{ github.event.repository.default_branch }}
+          committer_message: "chore(metrics): update metrics.activity.svg"
+          output_action: commit
+          output_condition: always
+
+      - name: Generate repositories metrics
+        uses: lowlighter/metrics@latest
+        with:
+          filename: metrics.repositories.svg
+          token: ${{ secrets.METRICS_TOKEN }}
+          user: eyupcanbilgin
+          base: repositories
+          config_timezone: Europe/Istanbul
+          plugin_repositories: yes
+          plugin_repositories_pinned: 4
+          plugin_notable: yes
+          committer_branch: ${{ github.event.repository.default_branch }}
+          committer_message: "chore(metrics): update metrics.repositories.svg"
+          output_action: commit
+          output_condition: always

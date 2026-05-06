@@ -1,0 +1,24 @@
+# Secrets / local env (asla commit etme)
+.env
+.env.*
+*.pem
+*.key
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+*.log
+npm-debug.log*
+
+# Editör / IDE (isteğe bağlı; istersen bu satırları sil)
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Metrics / araç önbelleği (lokal çalıştırırsan)
+.cache/

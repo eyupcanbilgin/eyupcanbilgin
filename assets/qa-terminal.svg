@@ -1,0 +1,37 @@
+<svg width="1200" height="320" viewBox="0 0 1200 320" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="QA automation terminal">
+  <defs>
+    <linearGradient id="termBg" x1="0" y1="0" x2="1200" y2="320" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#060910"/>
+      <stop offset="1" stop-color="#090E1B"/>
+    </linearGradient>
+    <filter id="termGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="1.8" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="320" rx="16" fill="url(#termBg)"/>
+  <rect x="1" y="1" width="1198" height="318" rx="15" stroke="#1F2937"/>
+
+  <rect x="22" y="22" width="1156" height="36" rx="10" fill="#0D1425"/>
+  <circle cx="48" cy="40" r="6" fill="#22C55E"/>
+  <circle cx="70" cy="40" r="6" fill="#22D3EE"/>
+  <circle cx="92" cy="40" r="6" fill="#A855F7"/>
+  <text x="120" y="45" fill="#93C5FD" font-family="Consolas, Monaco, monospace" font-size="16">qa-terminal :: continuous-validation</text>
+
+  <g font-family="Consolas, Monaco, monospace" font-size="24" filter="url(#termGlow)">
+    <text x="44" y="102" fill="#22D3EE">&gt; initializing test framework...</text>
+    <text x="44" y="138" fill="#34D399">&gt; running UI scenarios...</text>
+    <text x="44" y="174" fill="#22D3EE">&gt; validating API contracts...</text>
+    <text x="44" y="210" fill="#34D399">&gt; checking mobile banking flows...</text>
+    <text x="44" y="246" fill="#22D3EE">&gt; publishing test report...</text>
+    <text x="44" y="282" fill="#86EFAC">&gt; build status: PASSED</text>
+  </g>
+
+  <rect x="44" y="266" width="11" height="22" fill="#22C55E">
+    <animate attributeName="opacity" values="1;0;1" dur="1s" repeatCount="indefinite"/>
+  </rect>
+</svg>
